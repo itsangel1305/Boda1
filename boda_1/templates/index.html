@@ -3,98 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boda de Tania y Antonio</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <script>
-        function updateCountdown(weddingDate) {
-            const countdown = document.getElementById('countdown');
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-            if (distance < 0) {
-                clearInterval(x);
-                countdown.innerHTML = "¡Ya es el día de la boda!";
-            }
+    <title>Invitación de Boda</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('path_to_your_background_image.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
         }
-
-        function openInvitation() {
-            document.getElementById('details').style.display = 'block';
-            document.getElementById('open-button').style.display = 'none';
-            document.getElementById('nav-bar').style.display = 'block';
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
         }
-
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const weddingDate = new Date('{{ wedding_date }}').getTime();
-            setInterval(() => updateCountdown(weddingDate), 1000);
-        });
-    </script>
+        .container.opened {
+            background: none;
+            box-shadow: none;
+            padding: 0;
+        }
+        .content {
+            display: none;
+        }
+        .content.show {
+            display: block;
+        }
+        .open-button {
+            background: url('path_to_your_wax_seal_image.png') no-repeat center;
+            background-size: cover;
+            border: none;
+            height: 80px;
+            width: 80px;
+            cursor: pointer;
+        }
+        .navbar {
+            display: none;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .navbar.show {
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
 </head>
 <body>
-    <nav id="nav-bar" style="display:none;">
-        <ul>
-            <li><a href="#details">Nos Casamos</a></li>
-            <li><a href="#wedding-details">Cuando y Dónde</a></li>
-            <li><a href="#gift-table">Mesa de Regalos</a></li>
-            <li><a href="#rsvp">Confirmación</a></li>
-        </ul>
-    </nav>
-    <div class="invitation">
+    <div class="container">
         <h1>Tania y Antonio te invitan a su boda</h1>
-        <button id="open-button" class="button" onclick="openInvitation()">Abrir invitación</button>
-        <div class="countdown" id="countdown"></div>
-        <div id="details" style="display:none;">
-            <div id="wedding-details" class="section">
+        <button id="openButton" class="open-button"></button>
+        <div id="countdown"></div>
+        <nav id="navbar" class="navbar">
+            <a href="#details">Detalles</a>
+            <a href="#location">Ubicaciones</a>
+            <a href="#parents">Nuestros Padres</a>
+            <a href="#sponsors">Padrinos</a>
+            <a href="#confirmation">Confirmación</a>
+        </nav>
+        <div id="content" class="content">
+            <section id="details">
                 <h2>Detalles de la Boda</h2>
                 <p>Fecha: 30 de noviembre</p>
                 <p>Ceremonia Religiosa: Templo de Santa Rosa de Viterbo</p>
                 <p>Hora: 16:00hrs</p>
                 <p>Recepción: Hacienda los Albos</p>
                 <p>Hora: 18:30hrs</p>
-                <p class="subtitle">Código de vestimenta: Formal</p>
+                <p>Código de vestimenta: Formal</p>
                 <p>Mesa de regalos: Liverpool, Número de evento: 52379919</p>
                 <p>Sin niños</p>
-            </div>
-            <div class="section">
+            </section>
+            <section id="location">
                 <h2>Ubicaciones</h2>
                 <p><a href="https://maps.app.goo.gl/sLMyshjNGuv8tZYm8?g_st=iw" target="_blank">Hacienda los Albos</a></p>
                 <p><a href="https://maps.app.goo.gl/PB3eyRpE9JPutfSV7?g_st=iw" target="_blank">Templo de Santa Rosa de Viterbo</a></p>
-            </div>
-            <div class="section">
+            </section>
+            <section id="parents">
                 <h2>Nuestros Padres</h2>
                 <p>Padres de la novia: Maria Guadalupe Rodriguez Lopez y Jose Luis Bringas Flores</p>
                 <p>Padres del novio: Silvia L Vallejo Figueroa y Antonio Becerra Reyes</p>
-            </div>
-            <div class="section">
+            </section>
+            <section id="sponsors">
                 <h2>Padrinos</h2>
                 <p>Erika Alvarez Cruz y Daniel Becerra Vallejo</p>
-            </div>
-            <div class="section">
-                <h2>Frase Especial</h2>
-                <p>El amor de estas dos bellas personas, se puede resumir en la letra de esta canción:</p>
-                <p>"And if a double decker bus, crashes into us, to die by your side is such a heavenly way to die."</p>
-            </div>
-            <div id="rsvp" class="section">
+            </section>
+            <section id="confirmation">
                 <h2>Confirmación</h2>
-                <form action="/rsvp" method="post">
-                    <label for="name">Nombre:</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                    <label for="attending">Asistirás:</label>
-                    <select id="attending" name="attending">
-                        <option value="yes">Sí</option>
-                        <option value="no">No</select>
-                    <button type="submit" class="button">Confirmar</button>
+                <form>
+                    <input type="text" name="name" placeholder="Tu Nombre">
+                    <input type="email" name="email" placeholder="Tu Email">
+                    <button type="submit">Confirmar Asistencia</button>
                 </form>
-            </div>
+            </section>
         </div>
     </div>
+
+    <script>
+        document.getElementById('openButton').addEventListener('click', function() {
+            document.querySelector('.container').classList.add('opened');
+            document.getElementById('content').classList.add('show');
+            document.getElementById('navbar').classList.add('show');
+            this.style.display = 'none';
+        });
+
+        // Countdown timer
+        const countDownDate = new Date("Nov 30, 2024 16:00:00").getTime();
+        const countdownElement = document.getElementById("countdown");
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (distance < 0) {
+                clearInterval(interval);
+                countdownElement.innerHTML = "La boda ha comenzado";
+            }
+        }
+
+        const interval = setInterval(updateCountdown, 1000);
+
+        // Add to calendar link
+        function addToCalendar() {
+            const title = encodeURIComponent("Boda de Tania y Antonio");
+            const location = encodeURIComponent("Templo de Santa Rosa de Viterbo, Querétaro, México");
+            const details = encodeURIComponent("Ceremonia religiosa seguida de la recepción en Hacienda los Albos.");
+            const startDate = "20241130T160000";
+            const endDate = "20241130T200000";
+            const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}&details=${details}&location=${location}`;
+
+            window.open(url, '_blank');
+        }
+
+        document.getElementById('calendarLink').addEventListener('click', addToCalendar);
+    </script>
 </body>
 </html>

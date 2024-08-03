@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Tania y Antonio Boda//EN
+BEGIN:VEVENT
+UID:boda_tania_antonio@example.com
+DTSTAMP:20240730T000000Z
+DTSTART:20241130T160000Z
+DTEND:20241130T200000Z
+SUMMARY:Boda de Tania y Antonio
+DESCRIPTION:Ceremonia Religiosa en el Templo de Santa Rosa de Viterbo a las 16:00hrs y recepción en Hacienda los Albos a las 18:30hrs.
+LOCATION:Templo de Santa Rosa de Viterbo, Hacienda los Albos
+END:VEVENT
+END:VCALENDAR

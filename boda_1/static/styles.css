@@ -1,73 +1,47 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0e6f6; /* Color pastel de fondo */
-    color: #333;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-}
-
-nav {
-    background-color: #e91e63;
-    padding: 10px;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 10px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-nav ul li a:hover {
-    background-color: #d81b60;
-}
-
-.invitation {
-    background-color: #fff;
-    padding: 20px;
-    margin: 50px auto;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 600px;
-    background-image: url('https://path/to/your/background-image.jpg'); /* URL de la imagen de fondo */
+    background: url('path_to_your_background_image.png') no-repeat center center fixed;
     background-size: cover;
-    background-position: center;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
     color: #333;
 }
-
-.countdown {
-    margin: 20px 0;
+.container {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
-
-.button {
-    background-color: #e91e63;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
+.container.opened {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+}
+.content {
+    display: none;
+}
+.content.show {
+    display: block;
+}
+.open-button {
+    background: url('path_to_your_wax_seal_image.png') no-repeat center;
+    background-size: cover;
+    border: none;
+    height: 80px;
+    width: 80px;
+    cursor: pointer;
+}
+.navbar {
+    display: none;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
     border-radius: 5px;
 }
-
-.button:hover {
-    background-color: #d81b60;
-}
-
-.section {
-    margin: 20px 0;
-}
-
-.subtitle {
-    color: #888;
+.navbar.show {
+    display: flex;
+    justify-content: space-around;
 }
